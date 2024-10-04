@@ -1,0 +1,3 @@
+var x = 34;
+var y = 35;
+print x + y;
