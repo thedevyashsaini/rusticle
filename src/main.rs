@@ -7,13 +7,13 @@ use std::fs;
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        eprintln!("Usage: rusticle <filename>");
+        eprintln!("Usage: rusticle <filename.lin>");
         return;
     }
     
-    let filename = &args[1];
+    let filename: &String = &args[1];
 
-    let source = match fs::read_to_string(filename) {
+    let source: String = match fs::read_to_string(filename) {
         Ok(content) => content.to_string(),
         Err(e) => {
             eprintln!("Error reading {}: {}", filename, e);
@@ -21,8 +21,8 @@ fn main() {
         }
     };
 
-    let mut lexer = Lexer::new(source);
-    let tokens = lexer.scan_tokens();
+    let mut lexer: Lexer = Lexer::new(source);
+    let tokens: &Vec<lexer::token::Token> = lexer.scan_tokens();
 
     for token in tokens {
         println!("{:?}", token);

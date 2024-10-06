@@ -1,0 +1,9 @@
+var x = 34;
+var y = 35;
+likh x + y;
+// comments here
+x
+jabTak (x > 5) {
+    likh x; 
+    x = x + 1;
+}
