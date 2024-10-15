@@ -28,7 +28,7 @@ jobs:
         docker push thedevyashsaini/rusticle
 
     - name: Deploy to Azure Web App
-      uses: azure/webapps-container-deploy@v2
+      uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
         images: thedevyashsaini/rusticle
