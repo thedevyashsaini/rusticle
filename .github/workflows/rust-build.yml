@@ -48,3 +48,5 @@ jobs:
         asset_path: target/release/rusticle
         asset_name: rusticle
         asset_content_type: application/octet-stream
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
