@@ -31,7 +31,8 @@ jobs:
         path: target/release/
 
     - name: Create GitHub Release
-      uses: actions/create-release@v1
+      id: create_release 
+      uses: actions/create-release@v1.1.0
       with:
         tag_name: v1.0.0-${{ github.run_number }}
         release_name: Build-${{ github.sha }}
