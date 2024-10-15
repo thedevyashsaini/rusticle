@@ -37,3 +37,7 @@ jobs:
       with:
         app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
         images: thedevyashsaini/rusticle
+
+    - name: Azure logout
+      run: |
+        az logout
