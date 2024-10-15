@@ -1,0 +1,28 @@
+trigger:
+  - master
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: UseRustVersion@0
+    inputs:
+      version: 'stable'
+    displayName: 'Install Rust'
+
+  - script: |
+      rustup default stable
+      rustup update
+      cargo build --release
+    displayName: 'Build with Cargo'
+
+  - task: CopyFiles@2
+    inputs:
+      contents: 'target/release/**'
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
+    displayName: 'Copy build output'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'rust-build'
+    displayName: 'Publish build artifacts'
