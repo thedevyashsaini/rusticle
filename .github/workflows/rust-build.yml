@@ -33,7 +33,7 @@ jobs:
     - name: Create GitHub Release
       uses: actions/create-release@v1
       with:
-        tag_name: ${{ github.sha }}
+        tag_name: v1.0.0-${{ github.run_number }}
         release_name: Build-${{ github.sha }}
         draft: false
         prerelease: false
