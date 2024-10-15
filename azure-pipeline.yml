@@ -4,19 +4,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - template: install-rust.yml
-
-  - script: |
-      rustup default stable
-      rustup update
-      cargo build --release
-    displayName: 'Build with Cargo'
-
-  - task: CopyFiles@2
+  - task: DownloadGitHubRelease@0
     inputs:
-      contents: 'target/release/**'
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-    displayName: 'Copy build output'
+      gitHubConnection: 'thedevyashsaini' 
+      repositoryName: 'thedevyashsaini/rusticle'
+      releaseId: 'latest'
+      assets: 'rusticle' 
+      downloadPath: '$(Build.ArtifactStagingDirectory)'
+    displayName: 'Download release from GitHub'
 
   - task: PublishBuildArtifacts@1
     inputs:
