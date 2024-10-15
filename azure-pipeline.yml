@@ -4,10 +4,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: UseRustVersion@0
-    inputs:
-      version: 'stable'
-    displayName: 'Install Rust'
+  - template: install-rust.yml
 
   - script: |
       rustup default stable
