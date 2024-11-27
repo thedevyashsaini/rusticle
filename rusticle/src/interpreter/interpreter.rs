@@ -238,7 +238,7 @@ impl Visitor<Object> for Interpreter {
 
     fn visit_print_stmt(&mut self, stmt: &Stmt) -> Object {
         if let Stmt::Print { expression } = stmt {
-            let value = self.evaluate(expression);
+            let value: Object = self.evaluate(expression);
             println!("{:?}", value);
         }
         Object::Nil
