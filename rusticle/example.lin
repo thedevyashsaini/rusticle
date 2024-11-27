@@ -1,0 +1,28 @@
+import "add" from "addition";
+
+// declare variables
+manle a = 6;
+manle b = 7;
+manle c = a + b;
+
+// conditional statements
+agar (c < 0) {
+    likh c;
+} nhito {
+    likh b;
+}
+
+// function declaration
+functio check(a) {
+    likh a;
+}
+
+// function calls
+check(1);
+
+// loops
+for (manle i = 0; i < 3; i = i + 1) {
+  likh i;
+}
+
+add(11, 11);

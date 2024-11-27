@@ -1,0 +1,46 @@
+RUSTICLE - LIN LANGUAGE INTERPRETER CLI
+
+USAGE:
+    rusticle <filename>.lin [OPTIONS]         # Run the specified .lin file
+    rusticle [COMMAND] [OPTIONS]              # Run various commands
+
+OPTIONS:
+    --prod                                    # Run in production environment
+    --version                                 # Display version of the current Rusticle installation
+    --help                                    # Display this help message
+
+COMMANDS:
+    install <packagename>                     # Install a package from the package store
+    uninstall <packagename>                   # Uninstall a package
+    update                                    # Update current Rusticle installation
+    update -p <packagename>                   # Update a specific package
+    reinstall                                 # Reinstall Rusticle interpreter
+
+    package [FOLLOWUP_COMMANDS]:              # Dealing with lin packages
+
+    FOLLOWUP_COMMANDS:
+        contribute /path/to/package           # Contribute a package to the package store
+        manage <packagename> delete           # Delete a contributed package (only if contributed by you)
+        manage <packagename> disable          # Disable a contributed package (only if contributed by you)
+        list                                  # List all installed packages
+        search <query>                        # Search for packages in the package store
+        info <packagename>                    # Display information about a specific package
+
+    auth --email <youremail>                  # Authenticate your Rusticle account (required for contributing or managing packages)
+    
+ADDITIONAL INFO:
+    Use 'rusticle <command> --help' for detailed information about any command.
+    Contributing and managing packages requires authentication via your email.
+
+EXAMPLES:
+    rusticle --help                           # Open commands help window
+    rusticle --version                        # Show version of current rusticle installation
+    rusticle hello_world.lin                  # Run hello_world.lin in the development environment
+    rusticle hello_world.lin --prod           # Run hello_world.lin in the production environment
+    rusticle install example_package          # Install the 'example_package'
+    rusticle package contribute /path/to/pkg  # Contribute a package to the store
+    rusticle auth --email user@example.com    # Authenticate with your Rusticle account
+    rusticle package list                     # List all installed packages
+    rusticle package search "math utilities"  # Search for packages with 'math utilities' in their name
+    rusticle package info example_package     # Get details of 'example_package'
+    rusticle reinstall                        # Reinstall Rusticle interpreter

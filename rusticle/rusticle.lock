@@ -1,0 +1,62 @@
+{
+  "packages": [
+    {
+      "name": "addition",
+      "version": "1.0.0",
+      "functions": [
+        {
+          "name": {
+            "token_type": "Identifier",
+            "lexeme": "add",
+            "line": 1
+          },
+          "params": [
+            {
+              "token_type": "Identifier",
+              "lexeme": "a",
+              "line": 1
+            },
+            {
+              "token_type": "Identifier",
+              "lexeme": "b",
+              "line": 1
+            }
+          ],
+          "body": [
+            {
+              "Print": {
+                "expression": {
+                  "Binary": {
+                    "left": {
+                      "Variable": {
+                        "name": {
+                          "token_type": "Identifier",
+                          "lexeme": "a",
+                          "line": 1
+                        }
+                      }
+                    },
+                    "operator": {
+                      "token_type": "Plus",
+                      "lexeme": "+",
+                      "line": 1
+                    },
+                    "right": {
+                      "Variable": {
+                        "name": {
+                          "token_type": "Identifier",
+                          "lexeme": "b",
+                          "line": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
