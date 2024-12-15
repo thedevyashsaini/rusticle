@@ -47,3 +47,4 @@ Here's a complete guide for syntax of our Lin language:
 
 - [@theDevyashSaini](https://www.github.com/thedevyashsaini)
 - [@Vaibhav-123-4](https://www.github.com/vaibhav-123-4)
+- [@DeepRao03](https://github.com/deeprao03)
