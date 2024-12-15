@@ -69,9 +69,7 @@ fn main() {
                 })
             } else {
                 Box::new(Invalid {
-                    message: format!(
-                        "\x1b[31merror:\x1b[0m the following command requires a package name. \n  \x1b[32m<install>\x1b[0m\n\n\x1b[4mUsage:\x1b[0m \x1b[1mrusticle\x1b[0m install <package>"
-                    ),
+                    message: "\x1b[31merror:\x1b[0m the following command requires a package name. \n  \x1b[32m<install>\x1b[0m\n\n\x1b[4mUsage:\x1b[0m \x1b[1mrusticle\x1b[0m install <package>".to_string(),
                 })
             }
         } else {
