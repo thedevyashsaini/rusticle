@@ -2,6 +2,8 @@
 
 Welcome to Rusticle, the programming language that combines the elegance of Rust with the simplicity of a popsicle! Whether you're declaring variables, writing functions, or importing packages, Rusticle makes it a breeze. Just like a popsicle on a hot day, Rusticle is refreshing and easy to enjoy. So grab your favorite flavor, dive into the code, and let the cool syntax of Rusticle chill your programming woes away!
 
+P.S.: The entire vibe syntax should work flawlessly... except for while loops. Why? Well, somewhere between my brilliant ideas and their execution, I managed to break them. Oh, and don’t even try package installation—it’s as broken as my hopes of loading the module correctly. Both of these hiccups exist because I messed up in multiple places. Think of it as a feature: you get to admire my creativity in breaking things!
+
 ## Installation & Usage
 
 Install Rust on your machine
