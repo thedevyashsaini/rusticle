@@ -1,10 +1,10 @@
-# Rusticle Language Syntax
+# Lin Language Syntax
 
-Rusticle is a custom language interpreter with a unique syntax. This document provides an overview of the syntax and usage of the Rusticle language.
+Rusticle is a custom language interpreter with a unique syntax. This document provides an overview of the syntax and usage of the Lin language.
 
 ## Example Program
 
-Here is an example program that demonstrates the syntax of Rusticle:
+Here is an example program that demonstrates the syntax of Lin:
 
 ```rust
 import "add" from "addition";
@@ -39,7 +39,7 @@ add(11, 11);
 
 ## Keywords
 
-The following keywords are reserved in Rusticle:
+The following keywords are reserved in Lin:
 
 - `and`
 - `class`
@@ -123,7 +123,7 @@ for (manle i = 0; i < 5; i = i + 1) {
 
 ## Logical Operators
 
-Rusticle supports the following logical operators:
+Lin supports the following logical operators:
 
 - `and`
 - `or`
@@ -138,7 +138,7 @@ agar (a > 0 and b > 0) {
 
 ## Comparison Operators
 
-Rusticle supports the following comparison operators:
+Lin supports the following comparison operators:
 
 - `>`
 - `>=`
@@ -157,7 +157,7 @@ agar (a == b) {
 
 ## Arithmetic Operators
 
-Rusticle supports the following arithmetic operators:
+Lin supports the following arithmetic operators:
 
 - `+`
 - `-`
