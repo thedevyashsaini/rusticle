@@ -1,0 +1,90 @@
+name: "Commit Message Linting"
+
+on:
+    pull_request:
+        types: [opened, edited, synchronize]
+
+jobs:
+    commitlint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "18"
+                  cache: "npm"
+
+            - name: Install commitlint dependencies
+              run: |
+                  npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+            - name: Validate current commit (if any)
+              if: github.event_name == 'push'
+              run: npx commitlint --from HEAD~1 --to HEAD --verbose
+
+            - name: Validate PR commits
+              if: github.event_name == 'pull_request'
+              run: |
+                  echo "Validating commits from ${{ github.event.pull_request.base.sha }} to ${{ github.event.pull_request.head.sha }}"
+                  npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+            - name: Comment on PR with commit message help
+              if: failure() && github.event_name == 'pull_request'
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const message = `## ❌ Commit Message Validation Failed
+
+                      Your commit messages don't follow the conventional commit format. Please update them to match the required format:
+
+                      ### Required Format
+                      \`\`\`
+                      type(scope): description
+
+                      [optional body]
+
+                      [optional footer(s)]
+                      \`\`\`
+
+                      ### Valid Types
+                      - **feat**: A new feature
+                      - **fix**: A bug fix
+                      - **docs**: Documentation only changes
+                      - **style**: Changes that don't affect code meaning (white-space, formatting, etc)
+                      - **refactor**: Code change that neither fixes a bug nor adds a feature
+                      - **perf**: Code change that improves performance
+                      - **test**: Adding missing tests or correcting existing tests
+                      - **chore**: Changes to build process or auxiliary tools
+                      - **ci**: Changes to CI configuration files and scripts
+                      - **build**: Changes that affect the build system or external dependencies
+
+                      ### Examples
+                      \`\`\`
+                      feat: add array data type support
+                      fix: resolve while loop parsing error
+                      docs: update README with installation instructions
+                      test: add unit tests for lexer module
+                      feat(parser): implement new AST node types
+                      fix(lexer): handle edge case in string tokenization
+                      \`\`\`
+
+                      ### How to Fix
+                      1. Use \`git rebase -i\` to edit your commit messages
+                      2. Or squash your commits and create a new one with proper format
+                      3. Force push your changes to update this PR
+
+                      For more details, see our [Contributing Guidelines](../blob/main/CONTRIBUTING.md).
+                      `;
+
+                      github.rest.issues.createComment({
+                        issue_number: context.issue.number,
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        body: message
+                      });
