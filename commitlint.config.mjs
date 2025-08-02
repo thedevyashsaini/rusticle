@@ -1,3 +1,4 @@
+// This file defines rules and configurations for how your commit messages should look.
 export default {
     extends: ["@commitlint/config-conventional"],
     rules: {
