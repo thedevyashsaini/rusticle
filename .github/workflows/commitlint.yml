@@ -34,8 +34,20 @@ jobs:
                   echo "Validating commits from ${{ github.event.pull_request.base.sha }} to ${{ github.event.pull_request.head.sha }}"
                   npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
-            - name: Comment on PR with commit message help
+            - name: Check if PR is from fork
               if: failure() && github.event_name == 'pull_request'
+              id: fork_check
+              run: |
+                  if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.event.pull_request.base.repo.full_name }}" ]; then
+                    echo "is_fork=true" >> $GITHUB_OUTPUT
+                    echo "⚠️ Warning: This PR is from a fork. Cannot post comment due to limited permissions."
+                    echo "Please ensure your commit messages follow the conventional commit format."
+                  else
+                    echo "is_fork=false" >> $GITHUB_OUTPUT
+                  fi
+
+            - name: Comment on PR with commit message help
+              if: failure() && github.event_name == 'pull_request' && steps.fork_check.outputs.is_fork == 'false'
               uses: actions/github-script@v7
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
